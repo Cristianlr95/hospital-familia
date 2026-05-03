@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+.gradle/
+.m2/
+
+# Build outputs
+dist/
+build/
+target/
+out/
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+*.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temporal
+.tmp/
+*.tmp
+
+# Subrepositories (manejados independientemente)
+hospital-familia-app/node_modules/
+hospital-familia-app/dist/
+hospital-familia-app/www/
+hospital-familia-server/target/
+hospital-familia-server/logs/
