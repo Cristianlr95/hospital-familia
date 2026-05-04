@@ -2,7 +2,8 @@
 
 **Objetivo:** Implementar el módulo de autenticación (Auth) en el backend Spring Boot 3.5 como base para todas las operaciones siguientes.
 
-**Alcance:** 
+**Alcance:**
+
 - Setup e inicialización del proyecto
 - Estructura de paquetes y capas
 - Entidades y DTOs
@@ -142,7 +143,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public abstract class BaseEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_generator")
     @SequenceGenerator(name = "id_generator", sequenceName = "seq_id", allocationSize = 1)
@@ -340,7 +341,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginRequest {
-    
+
     @NotBlank(message = "El email es requerido")
     @Email(message = "Formato de email inválido")
     private String email;
@@ -365,7 +366,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponse {
-    
+
     private String accessToken;
     private String refreshToken;
     private String tokenType = "Bearer";
@@ -390,7 +391,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterRequest {
-    
+
     @NotBlank(message = "El email es requerido")
     @Email(message = "Formato de email inválido")
     private String email;
@@ -436,7 +437,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO {
-    
+
     private Long id;
     private String username;
     private String email;
@@ -467,7 +468,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ApiResponse<T> {
-    
+
     private Boolean success;
     private String message;
     private T data;
@@ -721,7 +722,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, 
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         try {
             String jwt = getJwtFromRequest(request);
@@ -730,7 +731,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 String username = jwtTokenProvider.getUsernameFromToken(jwt);
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-                UsernamePasswordAuthenticationToken authentication = 
+                UsernamePasswordAuthenticationToken authentication =
                     new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());
                 authentication.setDetails(
@@ -861,7 +862,7 @@ public class AuthService {
 
     public LoginResponse refreshToken(TokenRefreshRequest request) {
         String refreshToken = request.getRefreshToken();
-        
+
         if (!jwtTokenProvider.validateToken(refreshToken)) {
             throw new AuthenticationException("Token de refresco inválido o expirado");
         }
@@ -1147,7 +1148,7 @@ management.endpoint.health.show-details=when-authorized
 
 ## 9. Migraciones de Base de Datos (Flyway)
 
-### 9.1 V1__Initial_Schema.sql
+### 9.1 V1\_\_Initial_Schema.sql
 
 ```sql
 -- Tabla de permisos
@@ -1223,7 +1224,7 @@ CREATE INDEX idx_roles_name ON roles(name);
 CREATE INDEX idx_permissions_code ON permissions(code);
 ```
 
-### 9.2 V2__Initial_Data.sql
+### 9.2 V2\_\_Initial_Data.sql
 
 ```sql
 -- Permisos base
@@ -1247,29 +1248,29 @@ INSERT INTO roles (name, description, active) VALUES
 ('ADMIN', 'Administrador del sistema', TRUE);
 
 -- Asignar permisos a TUTOR
-INSERT INTO role_permissions (role_id, permission_id) 
-SELECT r.id, p.id FROM roles r, permissions p 
+INSERT INTO role_permissions (role_id, permission_id)
+SELECT r.id, p.id FROM roles r, permissions p
 WHERE r.name = 'TUTOR' AND p.code IN (
     'READ_PATIENT', 'WRITE_PATIENT', 'READ_EVENT', 'READ_REPORT'
 );
 
 -- Asignar permisos a PACIENTE
-INSERT INTO role_permissions (role_id, permission_id) 
-SELECT r.id, p.id FROM roles r, permissions p 
+INSERT INTO role_permissions (role_id, permission_id)
+SELECT r.id, p.id FROM roles r, permissions p
 WHERE r.name = 'PACIENTE' AND p.code IN (
     'READ_PATIENT', 'READ_EVENT', 'READ_REPORT'
 );
 
 -- Asignar permisos a DOCTOR
-INSERT INTO role_permissions (role_id, permission_id) 
-SELECT r.id, p.id FROM roles r, permissions p 
+INSERT INTO role_permissions (role_id, permission_id)
+SELECT r.id, p.id FROM roles r, permissions p
 WHERE r.name = 'DOCTOR' AND p.code IN (
     'READ_PATIENT', 'WRITE_PATIENT', 'READ_EVENT', 'WRITE_EVENT', 'READ_REPORT', 'WRITE_NOTIFICATION'
 );
 
 -- Asignar todos los permisos a ADMIN
-INSERT INTO role_permissions (role_id, permission_id) 
-SELECT r.id, p.id FROM roles r, permissions p 
+INSERT INTO role_permissions (role_id, permission_id)
+SELECT r.id, p.id FROM roles r, permissions p
 WHERE r.name = 'ADMIN';
 ```
 
@@ -1380,7 +1381,7 @@ class AuthServiceTest {
     void testRegisterUserAlreadyExists() {
         when(userRepository.existsByEmail("test@example.com")).thenReturn(true);
 
-        assertThrows(UserAlreadyExistsException.class, 
+        assertThrows(UserAlreadyExistsException.class,
             () -> authService.register(registerRequest));
     }
 
@@ -1399,6 +1400,7 @@ class AuthServiceTest {
 ## 11. Plan de Implementación
 
 ### Semana 1-2: Infraestructura Base
+
 - [ ] Crear estructura de paquetes
 - [ ] Configurar Spring Security
 - [ ] Implementar JWT (generación, validación, refresco)
@@ -1406,12 +1408,14 @@ class AuthServiceTest {
 - [ ] Configurar base de datos (Flyway)
 
 ### Semana 2-3: Servicios y Controladores
+
 - [ ] Implementar AuthService
 - [ ] Implementar AuthController
 - [ ] Implementar manejo global de excepciones
 - [ ] Tests unitarios para servicios
 
 ### Semana 3-4: Validación y Deploy
+
 - [ ] Tests de integración
 - [ ] Validar con Postman/Insomnia
 - [ ] Configurar CORS
@@ -1473,4 +1477,3 @@ curl -X POST http://localhost:8080/api/auth/logout \
 - [ ] Documentación Swagger generada
 - [ ] CORS configurado para frontend
 - [ ] Commit y push a repositorio
-
