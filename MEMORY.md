@@ -1,5 +1,10 @@
 # MEMORY
 
+## Avance porcentual
+
+- Avance estimado del proyecto Hospital - Familia: 35%.
+- Delta de esta tarea: +10 puntos porcentuales por conectar el dashboard tutor con endpoints reales de estado visible y eventos autorizados, mantener la regla de no exponer datos antes de vinculacion aprobada y dejar servicios frontend reutilizables para los siguientes modulos.
+
 ## UI/UX Decisions
 
 ### [2026-05-05] Sistema de estilos para aplicación médica (estándar principal)
