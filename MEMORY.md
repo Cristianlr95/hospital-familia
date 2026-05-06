@@ -2,11 +2,11 @@
 
 ## Avance porcentual
 
-- Avance estimado del proyecto Hospital - Familia: 67%.
-- Delta de esta tarea: +5 puntos porcentuales por implementar el primer panel staff real en frontend: ruta `/dashboard/staff`, listado de solicitudes pendientes, acciones aprobar/rechazar, consulta de eventos por paciente, creacion de eventos visibles para tutores y cambio de estado de eventos.
+- Avance estimado del proyecto Hospital - Familia: 69%.
+- Delta de esta tarea: +2 puntos porcentuales por mejorar la UX de decision staff: rechazo inline con motivo obligatorio, validacion visual y cancelacion sin usar `prompt` del navegador.
 - Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
-- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin y validacion de build/test frontend.
-- Pendiente principal para subir el avance: mejorar UX de decision sin `prompt`, vista staff de historial completo, notificaciones/historial, revocacion persistida de sesiones, endurecimiento productivo de Swagger/variables y validacion visual end-to-end.
+- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline y validacion de build/test frontend.
+- Pendiente principal para subir el avance: vista staff de historial completo, notificaciones/historial, revocacion persistida de sesiones, endurecimiento productivo de Swagger/variables y validacion visual end-to-end.
 
 ## UI/UX Decisions
 
