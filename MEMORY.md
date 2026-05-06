@@ -2,8 +2,10 @@
 
 ## Avance porcentual
 
-- Avance estimado del proyecto Hospital - Familia: 35%.
-- Delta de esta tarea: +10 puntos porcentuales por conectar el dashboard tutor con endpoints reales de estado visible y eventos autorizados, mantener la regla de no exponer datos antes de vinculacion aprobada y dejar servicios frontend reutilizables para los siguientes modulos.
+- Avance estimado del proyecto Hospital - Familia: 62%.
+- Delta de esta tarea: +3 puntos porcentuales por cerrar CORS explicito y configurable para frontend local/futuro dominio, documentar la variable `CORS_ALLOWED_ORIGINS` y agregar cobertura de preflight para evitar regresiones entre Angular/Ionic y Spring Boot.
+- Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
+- Pendiente principal para subir el avance: panel staff real para gestionar solicitudes/eventos desde frontend, notificaciones/historial, revocacion persistida de sesiones, endurecimiento productivo de Swagger/variables y validacion visual end-to-end.
 
 ## UI/UX Decisions
 
