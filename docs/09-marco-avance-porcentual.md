@@ -42,12 +42,12 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | 1. MVP | 10% | 0.95 | 9.5 |
 | 2. UX | 10% | 0.90 | 9.0 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
-| 4. Backend | 20% | 0.92 | 18.4 |
-| 5. Frontend | 20% | 0.91 | 18.2 |
+| 4. Backend | 20% | 0.95 | 19.0 |
+| 5. Frontend | 20% | 0.94 | 18.8 |
 | 6. Hardening y sesiones | 10% | 0.96 | 9.6 |
-| 7. QA y beta | 10% | 0.58 | 5.8 |
+| 7. QA y beta | 10% | 0.62 | 6.2 |
 
-**Avance total actual estimado: 89.0%**
+**Avance total actual estimado: 90.6%**
 
 ## Evidencia del corte actual
 
@@ -68,6 +68,11 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - perfil `dev` explicito,
   - conexion validada contra `jdbc:postgresql://localhost:5432/hospital_familia_dev`,
   - healthcheck local verificado con `/actuator/health`.
+- Preferencias de notificacion tutor:
+  - tabla `notification_preferences` versionada con Flyway,
+  - endpoints `GET/PUT /api/notifications/preferences`,
+  - validacion de horario silencioso,
+  - panel frontend para cambios de estado, eventos, vinculaciones y horario silencioso.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -77,7 +82,7 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 - Backend sube por cerrar endpoints de actividad y gestion de sesiones con pruebas de integracion.
 - Frontend sube por integrar feed operativo, control real de sesiones y recuperacion automatica de sesion.
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed demo apagado por defecto y deja perfil DEV explicito por entorno.
-- QA y beta sube por ampliar evidencia automatizada, dejar credenciales reproducibles y validar conexion local real contra PostgreSQL dev, aunque sigue pendiente la validacion visual end-to-end formal y criterios de salida beta.
+- QA y beta sube por ampliar evidencia automatizada, dejar credenciales reproducibles, validar conexion local real contra PostgreSQL dev y cubrir preferencias con pruebas de integracion, aunque sigue pendiente la validacion visual end-to-end formal y criterios de salida beta.
 
 ## Criterios de nivel por fase
 
