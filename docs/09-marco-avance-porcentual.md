@@ -42,12 +42,12 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | 1. MVP | 10% | 0.95 | 9.5 |
 | 2. UX | 10% | 0.90 | 9.0 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
-| 4. Backend | 20% | 0.90 | 18.0 |
-| 5. Frontend | 20% | 0.88 | 17.6 |
-| 6. Hardening y sesiones | 10% | 0.82 | 8.2 |
-| 7. QA y beta | 10% | 0.40 | 4.0 |
+| 4. Backend | 20% | 0.92 | 18.4 |
+| 5. Frontend | 20% | 0.91 | 18.2 |
+| 6. Hardening y sesiones | 10% | 0.90 | 9.0 |
+| 7. QA y beta | 10% | 0.44 | 4.4 |
 
-**Avance total actual estimado: 84.8%**
+**Avance total actual estimado: 87.0%**
 
 ## Evidencia del corte actual
 
@@ -56,6 +56,10 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - listado de sesiones activas,
   - revocacion individual,
   - cierre de otras sesiones manteniendo la actual.
+- Endurecimiento del ciclo auth:
+  - refresh token rotado en cada refresh,
+  - invalidacion del refresh token anterior,
+  - recuperacion automatica del frontend ante `401` por expiracion de access token.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -63,8 +67,8 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 ## Motivo del ajuste por fase
 
 - Backend sube por cerrar endpoints de actividad y gestion de sesiones con pruebas de integracion.
-- Frontend sube por integrar feed operativo y control real de sesiones en tutor/staff.
-- Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora tambien se administra por cuenta.
+- Frontend sube por integrar feed operativo, control real de sesiones y recuperacion automatica de sesion.
+- Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura y sostiene la continuidad de sesion.
 - QA y beta sube por ampliar evidencia automatizada, aunque sigue pendiente la validacion visual end-to-end y criterios de salida beta.
 
 ## Criterios de nivel por fase
