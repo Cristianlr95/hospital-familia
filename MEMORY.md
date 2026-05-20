@@ -2,11 +2,12 @@
 
 ## Avance porcentual
 
-- Avance estimado del proyecto Hospital - Familia: 69%.
-- Delta de esta tarea: +2 puntos porcentuales por mejorar la UX de decision staff: rechazo inline con motivo obligatorio, validacion visual y cancelacion sin usar `prompt` del navegador.
+- Avance estimado del proyecto Hospital - Familia: 79.6%.
+- Marco de calculo: ver `docs/09-marco-avance-porcentual.md`.
+- Delta de esta tarea: +5.5 puntos porcentuales por formalizar el marco de avance, persistir revocacion de sesion por refresh token y endurecer Swagger/configuracion por entorno.
 - Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
-- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline y validacion de build/test frontend.
-- Pendiente principal para subir el avance: vista staff de historial completo, notificaciones/historial, revocacion persistida de sesiones, endurecimiento productivo de Swagger/variables y validacion visual end-to-end.
+- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion y Swagger deshabilitado por defecto.
+- Pendiente principal para subir el avance: notificaciones/historial transversal para tutor y staff, rotacion o gestion multiple de sesiones, endurecimiento operativo final y validacion visual end-to-end.
 
 ## UI/UX Decisions
 

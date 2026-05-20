@@ -11,6 +11,10 @@ Proyecto base creado en `C:\Users\Crist\Proyectos\Hospital - Familia`.
 - `docs/`: ruta de trabajo, backlog y guias operativas.
 - `prompts/`: prompts listos para reutilizar con los agentes locales.
 
+## Seguimiento
+- Avance porcentual y criterio de medicion: `docs/09-marco-avance-porcentual.md`
+- Memoria viva del proyecto: `MEMORY.md`
+
 ## Siguiente paso recomendado
 Leer el PDF base y transformar su contenido en:
 1. problema y objetivo del proyecto,
