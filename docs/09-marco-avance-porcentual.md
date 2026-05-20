@@ -1,0 +1,82 @@
+# Marco de avance porcentual
+
+## Objetivo
+Definir un criterio estable para medir el avance real de `Hospital - Familia` sin depender de estimaciones subjetivas.
+
+## Regla base
+El porcentaje del proyecto se calcula por evidencia entregable y no por cantidad de archivos, commits o lineas de codigo.
+
+Cada fase tiene un peso fijo. Cada fase se evalua de `0` a `100` segun evidencia real:
+- documentacion cerrada,
+- backend implementado,
+- frontend conectado,
+- validacion por pruebas,
+- endurecimiento operativo.
+
+## Pesos por fase
+
+| Fase | Descripcion | Peso |
+| --- | --- | ---: |
+| 0 | Lectura, discovery y descomposicion | 10% |
+| 1 | Producto, MVP y backlog | 10% |
+| 2 | UX, flujos y comunicacion | 10% |
+| 3 | Arquitectura tecnica | 10% |
+| 4 | Implementacion backend | 20% |
+| 5 | Implementacion frontend | 20% |
+| 6 | Seguridad, sesiones, hardening y despliegue | 10% |
+| 7 | QA integral, validacion final y salida beta | 10% |
+
+## Formula
+
+```text
+avance_total = suma(peso_fase * nivel_fase)
+
+donde nivel_fase se expresa entre 0.00 y 1.00
+```
+
+## Estado actual estimado
+
+| Fase | Peso | Nivel actual | Aporte |
+| --- | ---: | ---: | ---: |
+| 0. Discovery | 10% | 1.00 | 10.0 |
+| 1. MVP | 10% | 0.95 | 9.5 |
+| 2. UX | 10% | 0.90 | 9.0 |
+| 3. Arquitectura | 10% | 0.85 | 8.5 |
+| 4. Backend | 20% | 0.84 | 16.8 |
+| 5. Frontend | 20% | 0.80 | 16.0 |
+| 6. Hardening y sesiones | 10% | 0.70 | 7.0 |
+| 7. QA y beta | 10% | 0.28 | 2.8 |
+
+**Avance total actual estimado: 79.6%**
+
+## Criterios de nivel por fase
+
+### 0. Discovery
+- `100%` si problema, usuarios, restricciones y supuestos quedaron documentados.
+
+### 1. MVP
+- `100%` si alcance, backlog, historias y criterios base quedaron definidos.
+
+### 2. UX
+- `100%` si flujos principales, estados, wireframes conceptuales y microcopy base quedaron cerrados.
+
+### 3. Arquitectura
+- `100%` si stack, modulos, seguridad, datos y contratos principales ya estan decididos.
+
+### 4. Backend
+- `100%` si auth, linking, estado, eventos, sesiones, endurecimiento y pruebas criticas estan completos.
+
+### 5. Frontend
+- `100%` si login, dashboards, linking, estado, eventos, historial, sesiones y feedback visual estan integrados.
+
+### 6. Hardening y sesiones
+- `100%` si logout persistido, refresh seguro, swagger por entorno, variables externas, CORS, logs y secretos estan cerrados.
+
+### 7. QA y beta
+- `100%` si existe validacion funcional, visual y tecnica con criterios de salida a beta.
+
+## Como actualizar este porcentaje
+1. Ajustar el `nivel actual` de la fase afectada.
+2. Recalcular el `aporte`.
+3. Actualizar `MEMORY.md` con el total y el delta de la tarea.
+4. No subir el porcentaje si no existe evidencia verificable en codigo, pruebas o documentos.
