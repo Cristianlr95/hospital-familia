@@ -2,12 +2,12 @@
 
 ## Avance porcentual
 
-- Avance estimado del proyecto Hospital - Familia: 84.8%.
+- Avance estimado del proyecto Hospital - Familia: 87.0%.
 - Marco de calculo: ver `docs/09-marco-avance-porcentual.md`.
-- Delta de esta tarea: +5.2 puntos porcentuales por consolidar historial transversal tutor/staff ya integrado en `main`, agregar gestion multiple de sesiones en backend/frontend y ampliar la evidencia de pruebas sobre seguridad de sesiones.
+- Delta de esta tarea: +2.2 puntos porcentuales por endurecer el flujo de autenticacion con refresh token rotado, recuperacion automatica ante `401` y nueva evidencia de validacion sobre continuidad de sesion.
 - Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
-- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones y cierre de otras sesiones desde la app.
-- Pendiente principal para subir el avance: endurecimiento operativo final, control de salida beta con validacion visual end-to-end y eventual capa de notificaciones mas proactiva si se requiere fuera del feed actual.
+- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app y refresh de sesion con rotacion segura del refresh token.
+- Pendiente principal para subir el avance: endurecimiento operativo final por entorno, control de salida beta con validacion visual end-to-end y eventual capa de notificaciones mas proactiva si se requiere fuera del feed actual.
 
 ## UI/UX Decisions
 
