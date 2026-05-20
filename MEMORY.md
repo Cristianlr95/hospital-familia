@@ -2,11 +2,11 @@
 
 ## Avance porcentual
 
-- Avance estimado del proyecto Hospital - Familia: 88.3%.
+- Avance estimado del proyecto Hospital - Familia: 89.0%.
 - Marco de calculo: ver `docs/09-marco-avance-porcentual.md`.
-- Delta de esta tarea: +1.3 puntos porcentuales por incorporar seed demo controlado para revision local, credenciales QA estables y guia de validacion funcional tutor/staff.
+- Delta de esta tarea: +0.7 puntos porcentuales por formalizar perfil `dev`, validar conexion real contra `hospital_familia_dev` y documentar el procedimiento operativo de verificacion local.
 - Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
-- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app, refresh de sesion con rotacion segura del refresh token y datos demo reproducibles para revision local.
+- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app, refresh de sesion con rotacion segura del refresh token, datos demo reproducibles para revision local y perfil DEV conectado a PostgreSQL `hospital_familia_dev`.
 - Pendiente principal para subir el avance: endurecimiento operativo final por entorno, control de salida beta con validacion visual end-to-end formal y eventual capa de notificaciones mas proactiva si se requiere fuera del feed actual.
 
 ## UI/UX Decisions
