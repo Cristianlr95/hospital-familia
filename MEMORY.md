@@ -2,11 +2,11 @@
 
 ## Avance porcentual
 
-- Avance estimado del proyecto Hospital - Familia: 92.0%.
+- Avance estimado del proyecto Hospital - Familia: 93.4%.
 - Marco de calculo: ver `docs/09-marco-avance-porcentual.md`.
-- Delta de esta tarea: +1.4 puntos porcentuales por corregir el panel staff, agregar actualizacion de estado visible por staff, conectar frontend/backend y validar que tutores ven el snapshot actualizado.
+- Delta de esta tarea: +1.4 puntos porcentuales por implementar centro de notificaciones in-app, persistencia de avisos, lectura/marcado como leido, emisiones desde vinculacion/estado/eventos, respeto de preferencias y bandeja visible en dashboard tutor.
 - Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
-- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos/estado visible, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app, refresh de sesion con rotacion segura del refresh token, datos demo reproducibles para revision local, perfil DEV conectado a PostgreSQL `hospital_familia_dev` y preferencias de notificacion tutor persistidas.
+- Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos/estado visible, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app, refresh de sesion con rotacion segura del refresh token, datos demo reproducibles para revision local, perfil DEV conectado a PostgreSQL `hospital_familia_dev`, preferencias de notificacion tutor persistidas y centro de notificaciones in-app conectado.
 - Pendiente principal para subir el avance: validacion visual end-to-end formal, criterios de salida beta y eventual integracion real con proveedor push si el alcance del MVP lo exige.
 
 ## UI/UX Decisions

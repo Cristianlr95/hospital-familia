@@ -42,12 +42,12 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | 1. MVP | 10% | 0.95 | 9.5 |
 | 2. UX | 10% | 0.90 | 9.0 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
-| 4. Backend | 20% | 0.97 | 19.4 |
-| 5. Frontend | 20% | 0.97 | 19.4 |
+| 4. Backend | 20% | 0.99 | 19.8 |
+| 5. Frontend | 20% | 0.98 | 19.6 |
 | 6. Hardening y sesiones | 10% | 0.96 | 9.6 |
-| 7. QA y beta | 10% | 0.68 | 6.8 |
+| 7. QA y beta | 10% | 0.74 | 7.4 |
 
-**Avance total actual estimado: 92.0%**
+**Avance total actual estimado: 93.4%**
 
 ## Evidencia del corte actual
 
@@ -73,6 +73,13 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - endpoints `GET/PUT /api/notifications/preferences`,
   - validacion de horario silencioso,
   - panel frontend para cambios de estado, eventos, vinculaciones y horario silencioso.
+- Centro de notificaciones in-app:
+  - tabla `notifications` versionada con Flyway,
+  - endpoints `GET /api/notifications` y `PUT /api/notifications/{id}/read`,
+  - emisiones desde aprobacion/rechazo/revocacion de vinculaciones,
+  - emisiones desde cambios de estado visible y eventos familiares,
+  - respeto de preferencias por tipo y horario silencioso,
+  - bandeja tutor con estados `Nueva/Leida` y marcado de lectura.
 - Actualizacion de estado visible por staff:
   - endpoint `PUT /api/patients/{patientPublicId}/status`,
   - formulario conectado en panel staff,
@@ -84,10 +91,10 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 
 ## Motivo del ajuste por fase
 
-- Backend sube por cerrar endpoints de actividad, gestion de sesiones, preferencias y actualizacion staff del estado visible con pruebas de integracion.
-- Frontend sube por integrar feed operativo, control real de sesiones, recuperacion automatica de sesion, preferencias y actualizacion staff del snapshot visible.
+- Backend sube por cerrar persistencia y consulta del centro de notificaciones, marcar lectura, emisiones transaccionales desde flujos criticos y pruebas de integracion.
+- Frontend sube por integrar una bandeja tutor accionable para avisos familiares, manteniendo preferencias y actividad reciente como vistas complementarias.
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed demo apagado por defecto y deja perfil DEV explicito por entorno.
-- QA y beta sube por ampliar evidencia automatizada, dejar credenciales reproducibles, validar conexion local real contra PostgreSQL dev y cubrir preferencias con pruebas de integracion, aunque sigue pendiente la validacion visual end-to-end formal y criterios de salida beta.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias y lectura tutor, aunque sigue pendiente la validacion visual end-to-end formal y criterios de salida beta.
 
 ## Criterios de nivel por fase
 
