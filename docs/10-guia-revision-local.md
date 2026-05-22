@@ -28,17 +28,17 @@ Abrir:
 http://localhost:4200
 ```
 
-## Credenciales demo
+## Credenciales de revision
 
 | Perfil | Email | Password | Uso |
 | --- | --- | --- | --- |
-| Tutor | `tutor.demo@hospitalfamilia.local` | `password123` | Dashboard familiar, paciente vinculado, estado, eventos, actividad y sesiones |
-| Staff | `staff.demo@hospitalfamilia.local` | `password123` | Dashboard staff, feed transversal, historial y gestion operativa |
+| Tutor | `familia.rivera@hospitalfamilia.local` | `password123` | Dashboard familiar, paciente vinculado, estado, eventos, actividad, sesiones y notificaciones |
+| Staff | `enfermeria.central@hospitalfamilia.local` | `password123` | Dashboard staff, feed transversal, historial y gestion operativa |
 
 ## Datos incluidos
 
-- Paciente: `Paciente Demo Familia`.
-- Codigo de vinculacion: `HF-DEMO-001`.
+- Paciente: `Maria Gonzalez Rivera`.
+- Codigo de vinculacion: `HF-REV-001`.
 - Vinculacion tutor-paciente aprobada.
 - Snapshot de estado: estable, medicina interna, habitacion demo.
 - Eventos proximos: examen de control y visita familiar autorizada.
