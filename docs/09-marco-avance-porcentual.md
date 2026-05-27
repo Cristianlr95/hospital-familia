@@ -43,11 +43,11 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | 2. UX | 10% | 0.90 | 9.0 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
 | 4. Backend | 20% | 0.99 | 19.8 |
-| 5. Frontend | 20% | 0.98 | 19.6 |
-| 6. Hardening y sesiones | 10% | 0.96 | 9.6 |
-| 7. QA y beta | 10% | 0.74 | 7.4 |
+| 5. Frontend | 20% | 0.99 | 19.8 |
+| 6. Hardening y sesiones | 10% | 0.97 | 9.7 |
+| 7. QA y beta | 10% | 0.77 | 7.7 |
 
-**Avance total actual estimado: 93.4%**
+**Avance total actual estimado: 94.0%**
 
 ## Evidencia del corte actual
 
@@ -85,6 +85,12 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - formulario conectado en panel staff,
   - validaciones visibles en formulario de eventos/estado,
   - pruebas de integracion para escritura staff y lectura tutor.
+- Preparacion de revision beta local:
+  - login con inputs corregidos y menor riesgo de autofill cruzado entre proyectos `localhost`,
+  - seed de revision con usuarios realistas tutor/staff y paciente `Maria Gonzalez Rivera`,
+  - logs de runtime fuera de Git,
+  - staff puede crear/listar pacientes activos y generar codigos de vinculacion desde la app,
+  - tutor puede solicitar vinculacion usando un codigo creado por staff.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -92,9 +98,9 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 ## Motivo del ajuste por fase
 
 - Backend sube por cerrar persistencia y consulta del centro de notificaciones, marcar lectura, emisiones transaccionales desde flujos criticos y pruebas de integracion.
-- Frontend sube por integrar una bandeja tutor accionable para avisos familiares, manteniendo preferencias y actividad reciente como vistas complementarias.
-- Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed demo apagado por defecto y deja perfil DEV explicito por entorno.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias y lectura tutor, aunque sigue pendiente la validacion visual end-to-end formal y criterios de salida beta.
+- Frontend sube por integrar una bandeja tutor accionable para avisos familiares, mantener preferencias/actividad como vistas complementarias y mejorar el flujo staff para crear pacientes/codigos sin seed manual.
+- Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno y evita versionar logs generados.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor y creacion/listado de pacientes por staff, aunque sigue pendiente la validacion visual end-to-end formal.
 
 ## Criterios de nivel por fase
 
