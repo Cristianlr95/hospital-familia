@@ -40,14 +40,14 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | --- | ---: | ---: | ---: |
 | 0. Discovery | 10% | 1.00 | 10.0 |
 | 1. MVP | 10% | 1.00 | 10.0 |
-| 2. UX | 10% | 0.90 | 9.0 |
+| 2. UX | 10% | 0.92 | 9.2 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
 | 4. Backend | 20% | 1.00 | 20.0 |
 | 5. Frontend | 20% | 1.00 | 20.0 |
 | 6. Hardening y sesiones | 10% | 0.98 | 9.8 |
-| 7. QA y beta | 10% | 0.82 | 8.2 |
+| 7. QA y beta | 10% | 0.84 | 8.4 |
 
-**Avance total actual estimado: 95.5%**
+**Avance total actual estimado: 95.9%**
 
 ## Evidencia del corte actual
 
@@ -103,6 +103,11 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - respuesta sin enumeracion de emails inexistentes,
   - revocacion de sesiones activas tras cambio de contrasena,
   - pantalla Angular `/auth/reset-password` conectada desde login.
+- Configuracion basica de perfil:
+  - endpoint autenticado `PUT /api/auth/profile`,
+  - actualizacion de nombre, apellido y telefono sin permitir cambios de email/roles,
+  - almacenamiento local del usuario sincronizado tras validar sesion o guardar perfil,
+  - paneles de perfil conectados en dashboards tutor y staff.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -112,7 +117,7 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 - Backend llega a cierre MVP por completar administracion staff de pacientes: creacion, listado activo, archivado no destructivo y bloqueo de codigos archivados con prueba de integracion.
 - Frontend llega a cierre MVP por integrar el ciclo staff completo de pacientes/codigos: crear, seleccionar para eventos/estado y archivar con confirmacion.
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno, evita versionar logs generados y revoca sesiones activas tras recuperar contrasena.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos y recuperacion de contrasena, aunque sigue pendiente la validacion visual end-to-end formal.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena y perfil editable, aunque sigue pendiente la validacion visual end-to-end formal.
 
 ## Criterios de nivel por fase
 
