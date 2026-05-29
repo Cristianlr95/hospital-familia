@@ -42,12 +42,12 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | 1. MVP | 10% | 0.95 | 9.5 |
 | 2. UX | 10% | 0.90 | 9.0 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
-| 4. Backend | 20% | 0.99 | 19.8 |
-| 5. Frontend | 20% | 0.99 | 19.8 |
+| 4. Backend | 20% | 1.00 | 20.0 |
+| 5. Frontend | 20% | 1.00 | 20.0 |
 | 6. Hardening y sesiones | 10% | 0.97 | 9.7 |
-| 7. QA y beta | 10% | 0.77 | 7.7 |
+| 7. QA y beta | 10% | 0.80 | 8.0 |
 
-**Avance total actual estimado: 94.0%**
+**Avance total actual estimado: 94.7%**
 
 ## Evidencia del corte actual
 
@@ -91,16 +91,21 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - logs de runtime fuera de Git,
   - staff puede crear/listar pacientes activos y generar codigos de vinculacion desde la app,
   - tutor puede solicitar vinculacion usando un codigo creado por staff.
+- Archivado seguro de pacientes desde staff:
+  - endpoint `PATCH /api/staff/patients/{publicId}/deactivate`,
+  - el listado staff mantiene solo pacientes activos,
+  - el codigo archivado queda bloqueado para nuevas solicitudes de vinculacion,
+  - UI staff agrega accion de archivado con confirmacion antes de desactivar.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
 
 ## Motivo del ajuste por fase
 
-- Backend sube por cerrar persistencia y consulta del centro de notificaciones, marcar lectura, emisiones transaccionales desde flujos criticos y pruebas de integracion.
-- Frontend sube por integrar una bandeja tutor accionable para avisos familiares, mantener preferencias/actividad como vistas complementarias y mejorar el flujo staff para crear pacientes/codigos sin seed manual.
+- Backend llega a cierre MVP por completar administracion staff de pacientes: creacion, listado activo, archivado no destructivo y bloqueo de codigos archivados con prueba de integracion.
+- Frontend llega a cierre MVP por integrar el ciclo staff completo de pacientes/codigos: crear, seleccionar para eventos/estado y archivar con confirmacion.
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno y evita versionar logs generados.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor y creacion/listado de pacientes por staff, aunque sigue pendiente la validacion visual end-to-end formal.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff y archivado de codigos, aunque sigue pendiente la validacion visual end-to-end formal.
 
 ## Criterios de nivel por fase
 
