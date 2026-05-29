@@ -39,15 +39,15 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | Fase | Peso | Nivel actual | Aporte |
 | --- | ---: | ---: | ---: |
 | 0. Discovery | 10% | 1.00 | 10.0 |
-| 1. MVP | 10% | 0.95 | 9.5 |
+| 1. MVP | 10% | 1.00 | 10.0 |
 | 2. UX | 10% | 0.90 | 9.0 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
 | 4. Backend | 20% | 1.00 | 20.0 |
 | 5. Frontend | 20% | 1.00 | 20.0 |
-| 6. Hardening y sesiones | 10% | 0.97 | 9.7 |
-| 7. QA y beta | 10% | 0.80 | 8.0 |
+| 6. Hardening y sesiones | 10% | 0.98 | 9.8 |
+| 7. QA y beta | 10% | 0.82 | 8.2 |
 
-**Avance total actual estimado: 94.7%**
+**Avance total actual estimado: 95.5%**
 
 ## Evidencia del corte actual
 
@@ -96,6 +96,13 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - el listado staff mantiene solo pacientes activos,
   - el codigo archivado queda bloqueado para nuevas solicitudes de vinculacion,
   - UI staff agrega accion de archivado con confirmacion antes de desactivar.
+- Recuperacion de contrasena beta:
+  - tabla `password_reset_tokens` versionada con Flyway,
+  - endpoints publicos `POST /api/auth/password-reset/request` y `POST /api/auth/password-reset/confirm`,
+  - token temporal hasheado en base de datos,
+  - respuesta sin enumeracion de emails inexistentes,
+  - revocacion de sesiones activas tras cambio de contrasena,
+  - pantalla Angular `/auth/reset-password` conectada desde login.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -104,8 +111,8 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 
 - Backend llega a cierre MVP por completar administracion staff de pacientes: creacion, listado activo, archivado no destructivo y bloqueo de codigos archivados con prueba de integracion.
 - Frontend llega a cierre MVP por integrar el ciclo staff completo de pacientes/codigos: crear, seleccionar para eventos/estado y archivar con confirmacion.
-- Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno y evita versionar logs generados.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff y archivado de codigos, aunque sigue pendiente la validacion visual end-to-end formal.
+- Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno, evita versionar logs generados y revoca sesiones activas tras recuperar contrasena.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos y recuperacion de contrasena, aunque sigue pendiente la validacion visual end-to-end formal.
 
 ## Criterios de nivel por fase
 
