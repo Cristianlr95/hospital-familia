@@ -40,14 +40,14 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | --- | ---: | ---: | ---: |
 | 0. Discovery | 10% | 1.00 | 10.0 |
 | 1. MVP | 10% | 1.00 | 10.0 |
-| 2. UX | 10% | 0.92 | 9.2 |
+| 2. UX | 10% | 0.94 | 9.4 |
 | 3. Arquitectura | 10% | 0.85 | 8.5 |
 | 4. Backend | 20% | 1.00 | 20.0 |
 | 5. Frontend | 20% | 1.00 | 20.0 |
 | 6. Hardening y sesiones | 10% | 0.98 | 9.8 |
-| 7. QA y beta | 10% | 0.89 | 8.9 |
+| 7. QA y beta | 10% | 0.91 | 9.1 |
 
-**Avance total actual estimado: 96.4%**
+**Avance total actual estimado: 96.8%**
 
 ## Evidencia del corte actual
 
@@ -114,6 +114,13 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - checklist calculado por backend y protegido para `STAFF/ADMIN`,
   - panel staff con resumen visual, detalle de checks y fecha del corte,
   - prueba de integracion que valida acceso staff, bloqueo tutor y evidencia operativa minima.
+- Contacto tutor-staff MVP:
+  - tabla `contact_requests` versionada con Flyway,
+  - endpoints tutor para crear/listar solicitudes de contacto,
+  - endpoints staff para listar abiertas y resolver con nota,
+  - regla de autorizacion por vinculacion `APPROVED`,
+  - notificacion in-app al tutor al resolver,
+  - panel tutor y panel staff conectados.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -123,7 +130,8 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 - Backend llega a cierre MVP por completar administracion staff de pacientes: creacion, listado activo, archivado no destructivo y bloqueo de codigos archivados con prueba de integracion.
 - Frontend llega a cierre MVP por integrar el ciclo staff completo de pacientes/codigos: crear, seleccionar para eventos/estado y archivar con confirmacion.
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno, evita versionar logs generados y revoca sesiones activas tras recuperar contrasena.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena, perfil editable y checklist beta readiness visible para staff, aunque sigue pendiente la validacion visual end-to-end formal.
+- UX sube porque el tutor ya cuenta con una via visible y acotada para pedir orientacion al staff sin abrir chat clinico.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena, perfil editable, checklist beta readiness visible para staff y contacto tutor-staff con prueba de integracion, aunque sigue pendiente la validacion visual end-to-end formal.
 
 ## Criterios de nivel por fase
 
