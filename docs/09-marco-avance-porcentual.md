@@ -45,9 +45,9 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | 4. Backend | 20% | 1.00 | 20.0 |
 | 5. Frontend | 20% | 1.00 | 20.0 |
 | 6. Hardening y sesiones | 10% | 0.98 | 9.8 |
-| 7. QA y beta | 10% | 0.91 | 9.1 |
+| 7. QA y beta | 10% | 0.97 | 9.7 |
 
-**Avance total actual estimado: 96.8%**
+**Avance total actual estimado: 97.4%**
 
 ## Evidencia del corte actual
 
@@ -121,6 +121,12 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - regla de autorizacion por vinculacion `APPROVED`,
   - notificacion in-app al tutor al resolver,
   - panel tutor y panel staff conectados.
+- Checklist formal de salida beta:
+  - tabla `beta_exit_checks` versionada con Flyway,
+  - seed inicial con checks funcionales y visuales principales,
+  - endpoints staff/admin para listar y actualizar checks,
+  - panel staff con avance, notas de evidencia y marcado/reapertura,
+  - prueba de integracion para acceso staff, bloqueo tutor y actualizacion.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -131,7 +137,7 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 - Frontend llega a cierre MVP por integrar el ciclo staff completo de pacientes/codigos: crear, seleccionar para eventos/estado y archivar con confirmacion.
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno, evita versionar logs generados y revoca sesiones activas tras recuperar contrasena.
 - UX sube porque el tutor ya cuenta con una via visible y acotada para pedir orientacion al staff sin abrir chat clinico.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena, perfil editable, checklist beta readiness visible para staff y contacto tutor-staff con prueba de integracion, aunque sigue pendiente la validacion visual end-to-end formal.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena, perfil editable, checklist beta readiness visible para staff, contacto tutor-staff y checklist formal de salida beta persistido. No llega a 100% porque todavia falta ejecutar la validacion visual completa y registrar el resultado real.
 
 ## Criterios de nivel por fase
 
