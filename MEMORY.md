@@ -2,12 +2,12 @@
 
 ## Avance porcentual
 
-- Avance estimado del proyecto Hospital - Familia: 97.4%.
+- Avance estimado del proyecto Hospital - Familia: 98.2%.
 - Marco de calculo: ver `docs/09-marco-avance-porcentual.md`.
-- Delta de esta tarea: +0.6 puntos porcentuales por agregar checklist formal de salida beta persistido, administrable por staff/admin y conectado al panel staff con prueba de integracion.
+- Delta de esta tarea: +0.8 puntos porcentuales por agregar integracion SMTP configurable para recuperacion de contrasena, documentar variables operativas y mantener modo dev seguro.
 - Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
 - Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos/estado visible, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app, refresh de sesion con rotacion segura del refresh token, datos de revision reproducibles para revision local, perfil DEV conectado a PostgreSQL `hospital_familia_dev`, preferencias de notificacion tutor persistidas y centro de notificaciones in-app conectado.
-- Pendiente principal para subir el avance: ejecutar validacion visual end-to-end formal en navegador, registrar checks de salida beta y definir o descartar proveedor externo email/push para beta productiva.
+- Pendiente principal para subir el avance: ejecutar validacion visual end-to-end formal en navegador, registrar checks de salida beta y validar SMTP con credenciales reales o descartar formalmente email externo para beta.
 
 ## UI/UX Decisions
 
