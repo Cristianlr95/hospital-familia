@@ -41,13 +41,13 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | 0. Discovery | 10% | 1.00 | 10.0 |
 | 1. MVP | 10% | 1.00 | 10.0 |
 | 2. UX | 10% | 0.94 | 9.4 |
-| 3. Arquitectura | 10% | 0.85 | 8.5 |
+| 3. Arquitectura | 10% | 0.90 | 9.0 |
 | 4. Backend | 20% | 1.00 | 20.0 |
 | 5. Frontend | 20% | 1.00 | 20.0 |
-| 6. Hardening y sesiones | 10% | 0.98 | 9.8 |
-| 7. QA y beta | 10% | 0.97 | 9.7 |
+| 6. Hardening y sesiones | 10% | 1.00 | 10.0 |
+| 7. QA y beta | 10% | 0.98 | 9.8 |
 
-**Avance total actual estimado: 97.4%**
+**Avance total actual estimado: 98.2%**
 
 ## Evidencia del corte actual
 
@@ -127,6 +127,12 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - endpoints staff/admin para listar y actualizar checks,
   - panel staff con avance, notas de evidencia y marcado/reapertura,
   - prueba de integracion para acceso staff, bloqueo tutor y actualizacion.
+- Integracion SMTP para recuperacion de contrasena:
+  - dependencia `spring-boot-starter-mail`,
+  - servicio `PasswordResetDeliveryService`,
+  - envio configurable con `APP_PASSWORD_RESET_DELIVERY_ENABLED`,
+  - variables SMTP externas documentadas,
+  - modo dev mantiene token expuesto solo si se habilita explicitamente.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -136,8 +142,10 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 - Backend llega a cierre MVP por completar administracion staff de pacientes: creacion, listado activo, archivado no destructivo y bloqueo de codigos archivados con prueba de integracion.
 - Frontend llega a cierre MVP por integrar el ciclo staff completo de pacientes/codigos: crear, seleccionar para eventos/estado y archivar con confirmacion.
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno, evita versionar logs generados y revoca sesiones activas tras recuperar contrasena.
+- Arquitectura sube porque la recuperacion de contrasena ya no depende solo de token visible en dev: queda separada en un servicio de entrega SMTP configurable por entorno.
+- Hardening y sesiones llega a cierre tecnico porque recuperacion, sesiones, refresh, CORS, docs por entorno, logs y secretos configurables quedan cubiertos para beta.
 - UX sube porque el tutor ya cuenta con una via visible y acotada para pedir orientacion al staff sin abrir chat clinico.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena, perfil editable, checklist beta readiness visible para staff, contacto tutor-staff y checklist formal de salida beta persistido. No llega a 100% porque todavia falta ejecutar la validacion visual completa y registrar el resultado real.
+- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena, perfil editable, checklist beta readiness visible para staff, contacto tutor-staff, checklist formal de salida beta persistido e integracion SMTP testeada a nivel de contexto. No llega a 100% porque todavia falta ejecutar la validacion visual completa y probar SMTP con credenciales reales o descartar formalmente ese alcance.
 
 ## Criterios de nivel por fase
 
