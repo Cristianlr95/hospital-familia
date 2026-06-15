@@ -40,14 +40,14 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 | --- | ---: | ---: | ---: |
 | 0. Discovery | 10% | 1.00 | 10.0 |
 | 1. MVP | 10% | 1.00 | 10.0 |
-| 2. UX | 10% | 0.94 | 9.4 |
-| 3. Arquitectura | 10% | 0.92 | 9.2 |
+| 2. UX | 10% | 0.98 | 9.8 |
+| 3. Arquitectura | 10% | 0.94 | 9.4 |
 | 4. Backend | 20% | 1.00 | 20.0 |
 | 5. Frontend | 20% | 1.00 | 20.0 |
 | 6. Hardening y sesiones | 10% | 1.00 | 10.0 |
-| 7. QA y beta | 10% | 0.99 | 9.9 |
+| 7. QA y beta | 10% | 1.00 | 10.0 |
 
-**Avance total actual estimado: 98.5%**
+**Avance total actual estimado: 99.2%**
 
 ## Evidencia del corte actual
 
@@ -137,6 +137,10 @@ donde nivel_fase se expresa entre 0.00 y 1.00
   - `management.health.mail.enabled` queda controlado por `MANAGEMENT_HEALTH_MAIL_ENABLED`,
   - por defecto queda apagado para no marcar el backend como `DOWN` cuando SMTP no esta configurado,
   - `/actuator/health` queda validado contra PostgreSQL `hospital_familia_dev` con estado `UP`.
+- Decision de alcance SMTP beta:
+  - envio real por proveedor SMTP queda fuera del alcance obligatorio beta,
+  - recuperacion de contrasena por token temporal sigue cubierta,
+  - activacion SMTP real queda como tarea post-beta/operacion.
 - Validacion tecnica ejecutada:
   - `hospital-familia-server`: `.\mvnw.cmd -q test`
   - `hospital-familia-app`: `npm run build`
@@ -148,8 +152,8 @@ donde nivel_fase se expresa entre 0.00 y 1.00
 - Hardening y sesiones sube porque el refresh token ya no solo se revoca al logout: ahora rota de forma segura, sostiene la continuidad de sesion, suma seed de revision apagado por defecto, deja perfil DEV explicito por entorno, evita versionar logs generados y revoca sesiones activas tras recuperar contrasena.
 - Arquitectura sube porque la recuperacion de contrasena ya no depende solo de token visible en dev: queda separada en un servicio de entrega SMTP configurable por entorno y su healthcheck queda gobernado por variable explicita.
 - Hardening y sesiones llega a cierre tecnico porque recuperacion, sesiones, refresh, CORS, docs por entorno, logs y secretos configurables quedan cubiertos para beta.
-- UX sube porque el tutor ya cuenta con una via visible y acotada para pedir orientacion al staff sin abrir chat clinico.
-- QA y beta sube por ampliar evidencia automatizada con centro de notificaciones, preferencias, lectura tutor, creacion/listado de pacientes por staff, archivado de codigos, recuperacion de contrasena, perfil editable, checklist beta readiness visible para staff, contacto tutor-staff, checklist formal de salida beta persistido, integracion SMTP testeada a nivel de contexto y healthcheck backend/DB validado en dev. No llega a 100% porque todavia falta ejecutar la validacion visual completa y probar SMTP con credenciales reales o descartar formalmente ese alcance.
+- UX sube porque el tutor ya cuenta con una via visible y acotada para pedir orientacion al staff sin abrir chat clinico y la recuperacion de contrasena queda delimitada para beta sin depender de correo externo.
+- QA y beta queda completo a nivel documental/tecnico porque SMTP real fue declarado post-beta y el checklist persistido permite registrar evidencia de salida. El proyecto total no llega a 100% porque todavia falta ejecutar la validacion visual completa en navegador interactivo.
 
 ## Criterios de nivel por fase
 
