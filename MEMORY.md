@@ -4,10 +4,12 @@
 
 - Avance estimado del proyecto Hospital - Familia: 100%.
 - Marco de calculo: ver `docs/09-marco-avance-porcentual.md`.
+- Delta de esta tarea: refinamiento post-MVP sin modificar el porcentaje total. Se reorganizo el dashboard tutor, se incorporo un calendario familiar reutilizable, se tradujeron estados y fechas, y se agruparon las sesiones activas.
 - Delta de esta tarea: +0.8 puntos porcentuales por completar validacion visual desktop/mobile, reorganizar dashboards por secciones y cerrar el checklist beta 10/10.
 - Base completada: auth JWT backend/frontend, roles, vinculacion tutor-paciente con aprobacion staff, dashboard tutor protegido, estado visible autorizado, calendario familiar de eventos proximos y regla de no exponer datos de paciente sin vinculo `APPROVED`.
 - Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos/estado visible, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app, refresh de sesion con rotacion segura del refresh token, datos de revision reproducibles para revision local, perfil DEV conectado a PostgreSQL `hospital_familia_dev`, preferencias de notificacion tutor persistidas y centro de notificaciones in-app conectado.
 - Cierre MVP/beta: validacion funcional, tecnica y visual completada. Mejoras futuras quedan clasificadas como evolucion post-beta.
+- Refinamiento post-beta 2026-06-22: PR frontend #19 mergeado en `main` (`cd28e20`). QA aprobado en 1440x900 y 390x844, build/lint correctos y 5 pruebas unitarias exitosas.
 
 ## UI/UX Decisions
 
