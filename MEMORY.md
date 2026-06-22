@@ -10,6 +10,7 @@
 - Base completada ampliada: panel staff conectado a endpoints existentes de linking/eventos/estado visible, redireccion post-login segun rol tutor/staff/admin, rechazo con motivo inline, historial staff de vinculaciones, logout con revocacion persistida de sesion, feed de actividad transversal tutor/staff, listado de sesiones activas, revocacion individual de sesiones, cierre de otras sesiones desde la app, refresh de sesion con rotacion segura del refresh token, datos de revision reproducibles para revision local, perfil DEV conectado a PostgreSQL `hospital_familia_dev`, preferencias de notificacion tutor persistidas y centro de notificaciones in-app conectado.
 - Cierre MVP/beta: validacion funcional, tecnica y visual completada. Mejoras futuras quedan clasificadas como evolucion post-beta.
 - Refinamiento post-beta 2026-06-22: PR frontend #19 mergeado en `main` (`cd28e20`). QA aprobado en 1440x900 y 390x844, build/lint correctos y 5 pruebas unitarias exitosas.
+- Cierre de sugerencias 2026-06-22: backend PR #26 (`7ab5ba7`) y frontend PR #20 (`2a5e174`) mergeados. Calendario por rango real y cache mensual, componente compartido tutor/staff, carga por seccion, tolerancia parcial, sesiones expiradas/revocadas, confirmaciones, perfil dirty y accesibilidad de teclado completados. QA: 53 pruebas backend, 24 frontend y matriz responsive 320-1920 px.
 
 ## UI/UX Decisions
 
